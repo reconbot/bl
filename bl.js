@@ -124,12 +124,18 @@ BufferList.prototype.get = function get (index) {
   return tempBuffer[0]
 }
 
-
 BufferList.prototype.slice = function slice (start, end) {
-  if (typeof start == 'number' && start < 0)
+  if (typeof start == 'number' && start < 0){
     start += this.length
-  if (typeof end == 'number' && end < 0)
+  }
+  if (typeof end == 'number' && end < 0){
     end += this.length
+  }
+  const startOffset = start ? this._offset(start) : []
+  const endOffset = end ? this._offset(end) : []
+  if (startOffset[0] && startOffset[0] === endOffset[0]) {
+    return this._bufs[startOffset[0]].slice(startOffset[1], endOffset[1])
+  }
   return this.copy(null, 0, start, end)
 }
 

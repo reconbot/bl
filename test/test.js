@@ -47,7 +47,7 @@ tape('single bytes from multiple buffers', function (t) {
   t.end()
 })
 
-tape('multi bytes from single buffer', function (t) {
+tape('slice multi bytes from single buffer', function (t) {
   var bl = new BufferList()
   bl.append(Buffer.from('abcd'))
 
@@ -61,7 +61,7 @@ tape('multi bytes from single buffer', function (t) {
   t.end()
 })
 
-tape('multi bytes from single buffer (negative indexes)', function (t) {
+tape('slice multi bytes from single buffer (negative indexes)', function (t) {
   var bl = new BufferList()
   bl.append(Buffer.from('buffer'))
 
@@ -74,7 +74,7 @@ tape('multi bytes from single buffer (negative indexes)', function (t) {
   t.end()
 })
 
-tape('multiple bytes from multiple buffers', function (t) {
+tape('slice multiple bytes from multiple buffers', function (t) {
   var bl = new BufferList()
 
   bl.append(Buffer.from('abcd'))
@@ -94,7 +94,7 @@ tape('multiple bytes from multiple buffers', function (t) {
   t.end()
 })
 
-tape('multiple bytes from multiple buffer lists', function (t) {
+tape('slice multiple bytes from multiple buffer lists', function (t) {
   var bl = new BufferList()
 
   bl.append(new BufferList([ Buffer.from('abcd'), Buffer.from('efg') ]))
@@ -113,7 +113,7 @@ tape('multiple bytes from multiple buffer lists', function (t) {
 })
 
 // same data as previous test, just using nested constructors
-tape('multiple bytes from crazy nested buffer lists', function (t) {
+tape('slice multiple bytes from crazy nested buffer lists', function (t) {
   var bl = new BufferList()
 
   bl.append(new BufferList([
